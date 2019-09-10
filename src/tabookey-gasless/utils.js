@@ -118,19 +118,10 @@ module.exports = {
         ]);
         let signed = web3Utils.sha3('0x' + msg.toString('hex'));
         let buf_signed = Buffer.from(removeHexPrefix(signed), 'hex');
-
-        try {
-
-            let signer = ethUtils.bufferToHex(
-                ethUtils.pubToAddress(ethUtils.ecrecover(buf_signed, signature.v, signature.r, signature.s))
-            );
-            return signer;
-
-        } catch (e) {
-
-            console.error(e);
-            throw new Error(e);
-        }
+        let signer = ethUtils.bufferToHex(
+            ethUtils.pubToAddress(ethUtils.ecrecover(buf_signed, signature.v, signature.r, signature.s))
+        );
+        return signer;
     },
 
     parseHexString: function (str) {
