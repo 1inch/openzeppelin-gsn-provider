@@ -196,13 +196,13 @@ class DevRelayClient {
             accounts = await web3.eth.getAccounts();
         } catch (err) {
             throw new Error(
-                `Error getting accounts from local node for GSNDevProvider (${err.message}). Please set them manually using the ownerAddress and relayerAddress options.`,
+                `Error getting accounts from local node for GSNDevProvider (${err.message}). Please set them manually using the ownerAddress and relayerAddress options.`
             );
         }
 
         if (accounts.length < 2) {
             throw new Error(
-                `Error setting up owner and relayer accounts for GSNDevProvider (at least two unlocked accounts are needed on the local node but found ${accounts.length}). Please set them manually using the ownerAddress and relayerAddress options.`,
+                `Error setting up owner and relayer accounts for GSNDevProvider (at least two unlocked accounts are needed on the local node but found ${accounts.length}). Please set them manually using the ownerAddress and relayerAddress options.`
             );
         }
         this.ownerAddress = this.ownerAddress || accounts[0];

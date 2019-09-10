@@ -81,7 +81,7 @@ class ActiveRelayPinger {
         }
         if (body.MinGasPrice > gasPrice) {
           reject(
-            `Relayer ${relayUrl} requires a minimum gas price of ${body.MinGasPrice} which is over this transaction gas price (${gasPrice})`,
+            `Relayer ${relayUrl} requires a minimum gas price of ${body.MinGasPrice} which is over this transaction gas price (${gasPrice})`
           );
           return;
         }
@@ -240,7 +240,7 @@ class ServerHelper {
           relayUrl: args.url,
           transactionFee: args.transactionFee,
           stake: args.stake,
-          unstakeDelay: args.unstakeDelay,
+          unstakeDelay: args.unstakeDelay
         };
         relay.score = this.calculateRelayScore(relay);
         activeRelays[args.relay] = relay;
@@ -260,7 +260,7 @@ class ServerHelper {
         'No relayers elligible after filtering. Available relayers:\n' +
           origRelays.map(
             r =>
-              ` score=${r.score} txFee=${r.transactionFee} stake=${r.stake} unstakeDelay=${r.unstakeDelay} address=${r.address} url=${r.relayUrl}`,
+              ` score=${r.score} txFee=${r.transactionFee} stake=${r.stake} unstakeDelay=${r.unstakeDelay} address=${r.address} url=${r.relayUrl}`
           ),
       );
     }

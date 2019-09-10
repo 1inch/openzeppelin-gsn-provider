@@ -387,7 +387,7 @@ class RelayClient {
         );
     } catch (err) {
       throw new Error(
-        `Error estimating gas usage for transaction (${err.message}). Make sure the transaction is valid, or set a fixed gas value.`,
+        `Error estimating gas usage for transaction (${err.message}). Make sure the transaction is valid, or set a fixed gas value.`
       );
     }
 
@@ -405,7 +405,7 @@ class RelayClient {
         const error = new Error(
           `No relayer responded or accepted the transaction out of the ${pinger.pingedRelays} queried:\n${subErrors
             .map(err => ` ${err}`)
-            .join('\n')}`,
+            .join('\n')}`
         );
         error.errors = subErrors;
         throw error;
@@ -488,7 +488,7 @@ class RelayClient {
           .toString()
           .replace(
             /canRelay\(\) view function returned error code=(\d+)\..+/,
-            (_match, code) => `canRelay check failed with ${preconditionCodeToDescription(code)}`,
+            (_match, code) => `canRelay check failed with ${preconditionCodeToDescription(code)}`
           );
         errors.push(`Error sending transaction via relayer ${relayAddress}: ${errMsg}`);
         if (self.config.verbose) {
@@ -560,7 +560,7 @@ class RelayClient {
     const maxCharge = await relayHub.methods.maxPossibleCharge(gasLimit, gasPrice, relayFee).call();
     if (BN(maxCharge).isGreaterThan(BN(balance))) {
       throw new Error(
-        `Recipient ${recipient} has not enough funds for paying for this relayed call (has ${balance}, requires ${maxCharge}).`,
+        `Recipient ${recipient} has not enough funds for paying for this relayed call (has ${balance}, requires ${maxCharge}).`
       );
     }
   }

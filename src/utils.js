@@ -124,13 +124,13 @@ async function createRelayHubFromRecipient(web3, recipientAddress) {
     relayHubAddress = await relayRecipient.methods.getHubAddr().call();
   } catch (err) {
     throw new Error(
-      `Could not get relay hub address from recipient at ${recipientAddress} (${err.message}). Make sure it is a valid recipient contract.`,
+      `Could not get relay hub address from recipient at ${recipientAddress} (${err.message}). Make sure it is a valid recipient contract.`
     );
   }
 
   if (!relayHubAddress || ethUtils.isZeroAddress(relayHubAddress)) {
     throw new Error(
-      `The relay hub address is set to zero in recipient at ${recipientAddress}. Make sure it is a valid recipient contract.`,
+      `The relay hub address is set to zero in recipient at ${recipientAddress}. Make sure it is a valid recipient contract.`
     );
   }
 
@@ -145,7 +145,7 @@ async function createRelayHubFromRecipient(web3, recipientAddress) {
     hubVersion = await relayHub.methods.version().call();
   } catch (err) {
     throw new Error(
-      `Could not query relay hub version at ${relayHubAddress} (${err.message}). Make sure the address corresponds to a relay hub.`,
+      `Could not query relay hub version at ${relayHubAddress} (${err.message}). Make sure the address corresponds to a relay hub.`
     );
   }
 
