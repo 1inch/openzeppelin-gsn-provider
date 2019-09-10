@@ -139,7 +139,7 @@ class DevRelayClient {
         const maxCharge = await hub.methods.maxPossibleCharge(gasLimit, gasPrice, relayFee).call();
         if (BN(maxCharge).isGreaterThan(BN(balance))) {
             throw new Error(
-                `Recipient ${recipient} has not enough funds for paying for this relayed call (has ${balance}, requires ${maxCharge}).`,
+                `Recipient ${recipient} has not enough funds for paying for this relayed call (has ${balance}, requires ${maxCharge}).`
             );
         }
     }
