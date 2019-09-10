@@ -15,12 +15,6 @@
       "git add"
     ]
   },
-  "husky": {
-    "hooks": {
-      "pre-push": "npm run pre-push",
-      "pre-commit": "npm run pre-commit"
-    }
-  },
   "files": [
     "README.md",
     "LICENSE",
@@ -42,7 +36,7 @@
     "axios": "^0.19.0",
     "bignumber.js": "^9.0.0",
     "eth-crypto": "^1.4.0",
-    "eth-sig-util": "^2.4.4",
+    "eth-sig-util": "https://github.com/CryptoManiacsZone/eth-sig-util.git#1fdf27bd02bdee4d7daa34e296a4454fc525c6ab",
     "ethereumjs-tx": "^2.1.1",
     "ethereumjs-util": "^6.1.0",
     "ethereumjs-wallet": "^0.6.3",
