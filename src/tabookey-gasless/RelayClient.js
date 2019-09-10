@@ -62,7 +62,7 @@ class RelayClient {
       {
         httpTimeout: DEFAULT_HTTP_TIMEOUT,
       },
-      config,
+      config
     );
 
     this.web3 = web3;
@@ -86,7 +86,7 @@ class RelayClient {
       txfee: params.txFee || params.txfee || relayClientOptions.txFee || relayClientOptions.txfee,
       gas_limit: params.gas && toInt(params.gas),
       gas_price: params.gasPrice && toInt(params.gasPrice),
-      approveFunction: params.approveFunction || this.config.approveFunction,
+      approveFunction: params.approveFunction || this.config.approveFunction
     };
     if (relayClientOptions.verbose) console.log('RR: ', payload.id, relayOptions);
     return relayOptions;
@@ -111,7 +111,7 @@ class RelayClient {
     relay_hub_address,
     relay_address,
     sig,
-    approvalData,
+    approvalData
   ) {
     var tx = new ethJsTx({
       nonce: returned_tx.nonce,
@@ -119,7 +119,7 @@ class RelayClient {
       gasLimit: returned_tx.gas,
       to: returned_tx.to,
       value: returned_tx.value,
-      data: returned_tx.input,
+      data: returned_tx.input
     });
 
     let message = tx.hash(false);
@@ -138,7 +138,7 @@ class RelayClient {
       request_decoded_params[5].value,
       request_decoded_params[6].value,
       returned_tx.to,
-      signer,
+      signer
     );
     let transaction_orig_params_hash = utils.getTransactionHash(
       from,
@@ -149,7 +149,7 @@ class RelayClient {
       gas_limit,
       nonce,
       relay_hub_address,
-      relay_address,
+      relay_address
     );
 
     if (returned_tx_params_hash === transaction_orig_params_hash && address_relay === signer) {
@@ -174,7 +174,7 @@ class RelayClient {
         nonce,
         sig,
         approvalData,
-        signer,
+        signer
       });
     }
   }
@@ -196,7 +196,7 @@ class RelayClient {
     approvalData,
     relayUrl,
     relayHubAddress,
-    relayMaxNonce,
+    relayMaxNonce
   ) {
     var self = this;
 
@@ -212,7 +212,7 @@ class RelayClient {
         relayFee: relayFee,
         RecipientNonce: parseInt(recipientNonce),
         RelayMaxNonce: parseInt(relayMaxNonce),
-        RelayHubAddress: relayHubAddress,
+        RelayHubAddress: relayHubAddress
       };
 
       let callback = async function(error, body) {
@@ -221,7 +221,7 @@ class RelayClient {
             self.failedRelays[relayUrl] = {
               lastError: new Date().getTime(),
               address: relayAddress,
-              url: relayUrl,
+              url: relayUrl
             };
           }
           reject(error);
@@ -254,7 +254,7 @@ class RelayClient {
             relayHubAddress,
             relayAddress,
             signature,
-            approvalData,
+            approvalData
           );
         } catch (error) {
           console.error('validateRelayResponse ' + error);
@@ -383,7 +383,7 @@ class RelayClient {
             gasPrice,
             data: encodedFunctionCall,
           },
-          relayHub.options.address,
+          relayHub.options.address
         );
     } catch (err) {
       throw new Error(
@@ -425,7 +425,7 @@ class RelayClient {
           gasLimit,
           nonce,
           relayHub._address,
-          relayAddress,
+          relayAddress
         );
 
         if (typeof self.ephemeralKeypair === 'object' && self.ephemeralKeypair !== null) {
@@ -446,7 +446,7 @@ class RelayClient {
         gas: gasLimit,
         nonce,
         relayHubAddress: relayHub._address,
-        relayerAddress: relayAddress,
+        relayerAddress: relayAddress
       });
 
       if (self.config.verbose) {
@@ -480,7 +480,7 @@ class RelayClient {
           approvalData,
           relayUrl,
           relayHub._address,
-          relayMaxNonce,
+          relayMaxNonce
         );
         return validTransaction;
       } catch (error) {
@@ -501,7 +501,7 @@ class RelayClient {
             gasLimit,
             nonce,
             relayhub: relayHub._address,
-            relayAddress,
+            relayAddress
           });
           console.log('relayTransaction:', ('' + error).replace(/ (\w+:)/g, '\n$1 '));
         }
@@ -540,7 +540,7 @@ class RelayClient {
     let a = ethWallet.generate();
     return {
       privateKey: a.privKey,
-      address: '0x' + a.getAddress().toString('hex'),
+      address: '0x' + a.getAddress().toString('hex')
     };
   }
 
@@ -573,7 +573,7 @@ class RelayClient {
     const txParamsFromHub = {
       ...txParams,
       from: hubAddress,
-      data: appendAddress(txParams.data, txParams.from),
+      data: appendAddress(txParams.data, txParams.from)
     };
     return this.web3.eth.estimateGas(txParamsFromHub);
   }

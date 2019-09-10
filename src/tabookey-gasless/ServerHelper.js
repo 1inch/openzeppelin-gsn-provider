@@ -35,7 +35,7 @@ class ActiveRelayPinger {
           console.log('nextRelay: find fastest relay from: ' + JSON.stringify(slice));
         }
         firstRelayToRespond = await this.raceToSuccess(
-          slice.map(relay => this.getRelayAddressPing(relay.relayUrl, relay.transactionFee, this.gasPrice)),
+          slice.map(relay => this.getRelayAddressPing(relay.relayUrl, relay.transactionFee, this.gasPrice))
         );
         if (this.verbose) {
           console.log('race finished with a champion: ' + firstRelayToRespond.relayUrl);
@@ -117,8 +117,8 @@ class ActiveRelayPinger {
             if (++numRejected === promises.length) {
               reject('No response matched filter from any server: ' + err);
             }
-          }),
-      ),
+          })
+      )
     );
   }
 }
@@ -136,7 +136,7 @@ class ServerHelper {
       relayFilter, //function: return false to filter out a relay. default uses minStake, minDelay
       addScoreRandomness, //function: return Math.random (0..1), to fairly distribute among relays with same score.
       // (used by test to REMOVE the randomness, and make the test deterministic.
-    },
+    }
   ) {
     this.httpSend = httpSend;
     this.verbose = verbose;
@@ -223,7 +223,7 @@ class ServerHelper {
     let fromBlock = this.fromBlock || 2;
     let addedAndRemovedEvents = await this.relayHubInstance.getPastEvents('allEvents', {
       fromBlock: fromBlock,
-      topics: [this.addedAndRemovedSignatures],
+      topics: [this.addedAndRemovedSignatures]
     });
 
     if (this.verbose) {
@@ -261,7 +261,7 @@ class ServerHelper {
           origRelays.map(
             r =>
               ` score=${r.score} txFee=${r.transactionFee} stake=${r.stake} unstakeDelay=${r.unstakeDelay} address=${r.address} url=${r.relayUrl}`
-          ),
+          )
       );
     }
 

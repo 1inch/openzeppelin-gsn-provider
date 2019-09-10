@@ -32,5 +32,5 @@ function isGSNProvider(provider) {
 module.exports = {
   setGSN,
   withGSN,
-  isGSNProvider,
+  isGSNProvider
 };

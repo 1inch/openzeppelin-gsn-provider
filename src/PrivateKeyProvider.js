@@ -37,7 +37,7 @@ class PrivateKeyProvider {
         [txParams] = payload.params;
         callAsJsonRpc(this.ethSignTransaction.bind(this), [txParams], id, callback, signedTx => ({
           tx: txParams,
-          raw: signedTx,
+          raw: signedTx
         }));
         break;
 

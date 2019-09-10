@@ -108,9 +108,9 @@ function makeApproveFunction(signFn, verbose) {
           { type: 'uint256', value: toBN(data.gas) },
           { type: 'uint256', value: toBN(data.nonce) },
           { type: 'address', value: data.relayHubAddress },
-          { type: 'address', value: data.to },
-        ),
-      ),
+          { type: 'address', value: data.to }
+        )
+      )
     );
     if (verbose) console.log(`Signature for GSN transaction is ${signature}`);
     return signature;
@@ -189,5 +189,5 @@ module.exports = {
   makeApproveFunction,
   createRelayHubFromRecipient,
   isRelayHubDeployedForRecipient,
-  getRecipientFunds,
+  getRecipientFunds
 };

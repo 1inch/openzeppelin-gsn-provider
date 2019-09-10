@@ -86,7 +86,7 @@ module.exports = {
     if (withPrefix) {
       let msg = Buffer.concat([
         Buffer.from('\x19Ethereum Signed Message:\n32'),
-        Buffer.from(removeHexPrefix(hash), 'hex'),
+        Buffer.from(removeHexPrefix(hash), 'hex')
       ]);
       signed = web3Utils.sha3('0x' + msg.toString('hex'));
     } else signed = hash;
@@ -114,7 +114,7 @@ module.exports = {
     }
     let msg = Buffer.concat([
       Buffer.from('\x19Ethereum Signed Message:\n32'),
-      Buffer.from(removeHexPrefix(message), 'hex'),
+      Buffer.from(removeHexPrefix(message), 'hex')
     ]);
     let signed = web3Utils.sha3('0x' + msg.toString('hex'));
     let buf_signed = Buffer.from(removeHexPrefix(signed), 'hex');
@@ -135,5 +135,5 @@ module.exports = {
     return result;
   },
   removeHexPrefix: removeHexPrefix,
-  padTo64: padTo64,
+  padTo64: padTo64
 };

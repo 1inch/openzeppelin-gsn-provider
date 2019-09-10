@@ -18,6 +18,6 @@ module.exports = {
     appendAddress,
     makeApproveFunction,
     getRecipientFunds,
-    isRelayHubDeployedForRecipient,
-  },
+    isRelayHubDeployedForRecipient
+  }
 };
